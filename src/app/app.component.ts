@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 const ipcRenderer = require('electron').ipcRenderer;
 
+declare var componentHandler: any;
+
 @Component({
   moduleId: module.id,
   selector: 'my-app',
@@ -21,5 +23,9 @@ export class AppComponent {
   public test(): void {
     console.log("Getestet");
     ipcRenderer.send("message", "tested");
+  }
+
+  ngAfterContentChecked() {
+    componentHandler.upgradeAllRegistered();
   }
 }

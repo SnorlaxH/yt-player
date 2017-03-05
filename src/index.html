@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- 1. Load libraries -->
-     <!-- Polyfill(s) for older browsers -->
+    
+    <!-- MDL -->
+    <link rel="stylesheet" href="assets/bower/material-design-lite/material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Polyfill(s) for older browsers -->
     <script src="assets/vendor/core-js/client/shim.min.js"></script>
     <script src="assets/vendor/zone.js/zone.js"></script>
     <script src="assets/vendor/reflect-metadata/Reflect.js"></script>
@@ -16,17 +21,14 @@
         System.set('electron', System.newModule(require('electron')));
         System.import('app').catch(function(err){ console.error(err); });
     </script>
-    
-    <!-- MDL -->
-    <link rel="stylesheet" href="assets/bower/material-design-lite/material.min.css">
-    <script src="assets/bower/material-design-lite/material.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <link rel="stylesheet" href="css/style.css"/>
   </head>
   <!-- 3. Display the application -->
   <body>
     <my-app>Loading...</my-app>
+
+    <script src="assets/bower/material-design-lite/material.min.js"></script>
   </body>
 </html>
 

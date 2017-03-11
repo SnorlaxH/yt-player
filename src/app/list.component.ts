@@ -7,7 +7,14 @@ const ipcRenderer = require('electron').ipcRenderer;
     templateUrl: 'list.component.html'
 })
 export class ListComponent {
+    public IS_SEARCH: boolean = false;
+
     constructor() {
-        
+
+    }
+
+    public searchMode(isSearch: boolean) {
+        this.IS_SEARCH = isSearch;
+        console.log(this.IS_SEARCH);
     }
 }

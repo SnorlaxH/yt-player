@@ -7,6 +7,10 @@
     height: 50%;
 }
 
+.play-list.full {
+    height: 100%;
+}
+
 .play-list > .mdl-list {
     margin: 0;
 }

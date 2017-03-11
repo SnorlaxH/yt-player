@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppService } from './app.service';
 const ipcRenderer = require('electron').ipcRenderer;
 
 declare var componentHandler: any;
@@ -6,23 +7,25 @@ declare var componentHandler: any;
 @Component({
   moduleId: module.id,
   selector: 'my-app',
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.component.html',
+  providers: [AppService]
 })
 export class AppComponent {
-
-
-  constructor() {
+  constructor(private appService: AppService) {
     ipcRenderer.on("reply", (event, arg) => {
       console.log("Reply was " + arg);
     });
   }
 
   public Title: string = "재생목록";
-  public text_small: string = "Greatness awaits..."
+  IS_SEARCH: boolean = false;
 
-  public test(): void {
-    console.log("Getestet");
-    ipcRenderer.send("message", "tested");
+  getSearch(): boolean {
+    return this.appService.getSearch();
+  }
+
+  setSearch(isSearch: boolean): void {
+    this.appService.setSearch(isSearch);
   }
 
   ngAfterContentChecked() {

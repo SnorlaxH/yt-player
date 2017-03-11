@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { AppService } from './app.service';
 const ipcRenderer = require('electron').ipcRenderer;
+
+declare var componentHandler: any;
 
 @Component({
     moduleId: module.id,
@@ -7,14 +10,22 @@ const ipcRenderer = require('electron').ipcRenderer;
     templateUrl: 'list.component.html'
 })
 export class ListComponent {
-    public IS_SEARCH: boolean = false;
-
-    constructor() {
+    constructor(private appService: AppService) {
 
     }
 
-    public searchMode(isSearch: boolean) {
-        this.IS_SEARCH = isSearch;
-        console.log(this.IS_SEARCH);
+    IS_SEARCH: boolean = false;
+
+    ngOnInit() {
+        this.appService.searchUpdated.subscribe(
+            (IS_SEARCH: boolean) => {
+                this.IS_SEARCH = IS_SEARCH;
+                console.log('List', this.IS_SEARCH);
+            }
+        )
+    }
+
+    ngAfterContentChecked() {
+        componentHandler.upgradeAllRegistered();
     }
 }

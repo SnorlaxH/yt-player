@@ -13,6 +13,7 @@
 
 .play-list > .mdl-list {
     margin: 0;
+    padding: 0;
 }
 
 .footer-edit {
@@ -42,4 +43,31 @@
 
 .mdl-layout__drawer-button > .material-icons {
     line-height: 48px;
+}
+
+.search-header {
+    padding-left: 16px;
+}
+
+.search-field {
+    width: calc(100% - 40px);
+}
+
+.search-field > .mdl-textfield__input {
+    border-bottom-color: rgba(255, 255, 255, .12);
+}
+
+.search-field > .mdl-textfield__label::after {
+    background-color: #ffffff;
+}
+
+.search-field > .mdl-textfield__input, .mdl-textfield__label {
+    width: calc(100% - 20px);
+    color: #ffffff;
+    margin-left: 16px;
+    padding-left: 8px;
+}
+
+.is-search > .mdl-layout__drawer-button {
+    display: none;
 }

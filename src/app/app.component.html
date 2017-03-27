@@ -1,11 +1,20 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
+    <header class="mdl-layout__header" [ngClass]="{'is-search': IS_SEARCH}">
+        <div class="mdl-layout__header-row" *ngIf="!IS_SEARCH">
             <span class="mdl-layout-title">{{Title}}</span>
             <div class="mdl-layout-spacer"></div>
             <label class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons" (click)="searchMode(true)">search</i>
+                <i class="material-icons" (click)="setSearch(true)">search</i>
             </label>
+        </div>
+        <div class="mdl-layout__header-row search-header" *ngIf="IS_SEARCH">
+            <label class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons" (click)="setSearch(false)">keyboard_backspace</i>
+            </label>
+            <div class="mdl-textfield mdl-js-textfield search-field">
+                <input class="mdl-textfield__input" type="text" id="searchTxt">
+                <label class="mdl-textfield__label" for="searchTxt">검색</label>
+            </div>
         </div>
     </header>
     <div class="mdl-layout__drawer">
@@ -19,7 +28,7 @@
         <my-list></my-list>
     </main>
     <footer>
-        <div class="footer-edit">
+        <div class="footer-edit" *ngIf="FTR == 1">
             <div class="edit-btn edit-put">
                 <div>
                     <i class="edit-icon material-icons">add</i>
@@ -31,6 +40,23 @@
                     <i class="edit-icon material-icons">delete</i>
                 </div>
                 <span class="edit-title">삭제</span>
+            </div>
+        </div>
+
+        <div class="footer-store">
+            <div class="store-header">
+                <span class="store-title">담기</span>
+                <label class="mdl-button mdl-js-button mdl-button--icon store-close">
+                    <i class="material-icons">clear</i>
+                </label>
+            </div>
+            <hr/>
+            <div class="store-list">
+                <ul class="mdl-list">
+                    <li class="mdl-list__item mdl-list__item--two-line">
+                        <span></span>
+                    </li>
+                </ul>
             </div>
         </div>
     </footer>

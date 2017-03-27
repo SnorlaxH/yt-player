@@ -18,6 +18,7 @@ export class AppComponent {
 
   public Title: string = "재생목록";
   IS_SEARCH: boolean = false;
+  FTR: number = 0;
 
   getSearch(): boolean {
     return this.appService.getSearch();
@@ -25,6 +26,20 @@ export class AppComponent {
 
   setSearch(isSearch: boolean): void {
     this.appService.setSearch(isSearch);
+  }
+
+  ngOnInit() {
+    this.appService.searchUpdated.subscribe(
+      (IS_SEARCH: boolean) => {
+        this.IS_SEARCH = IS_SEARCH;
+        console.log('App', this.IS_SEARCH);
+      }
+    )
+    this.appService.footerUpdated.subscribe(
+      (FTR: number) => {
+        this.FTR = FTR;
+      }
+    )
   }
 
   ngAfterContentChecked() {

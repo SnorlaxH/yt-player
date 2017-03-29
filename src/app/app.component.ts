@@ -13,7 +13,6 @@ declare var componentHandler: any;
 export class AppComponent {
   constructor(private appService: AppService) {
     ipcRenderer.on("reply", (event, arg) => {
-      console.log("Reply was " + arg);
     });
   }
 

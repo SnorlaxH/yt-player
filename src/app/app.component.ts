@@ -20,6 +20,24 @@ export class AppComponent {
   public Title: string = "재생목록";
   IS_SEARCH: boolean = false;
   FTR: number = 0;
+  public menus: Object = [
+    {
+      TITLE: '재생 목록에 담기',
+      CONT: '맨 끝',
+      ICON: {
+        TITLE: '',
+        CONT: 'done'
+      }
+    },
+    {
+      TITLE: '플레이리스트에 담기',
+      CONT: '',
+      ICON: {
+        TITLE: '',
+        CONT: ''
+      }
+    }
+  ];
 
   getSearch(): boolean {
     return this.appService.getSearch();

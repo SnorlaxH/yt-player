@@ -43,21 +43,30 @@
             </div>
         </div>
 
-        <div class="footer-store">
-            <div class="store-header">
-                <span class="store-title">담기</span>
+        <div class="footer-menu">
+            <div class="menu-header">
+                <span class="menu-title">담기</span>
                 <label class="mdl-button mdl-js-button mdl-button--icon store-close">
                     <i class="material-icons">clear</i>
                 </label>
             </div>
             <hr/>
-            <div class="store-list">
+            <div class="menu-list">
                 <ul class="mdl-list">
-                    <li class="mdl-list__item mdl-list__item--two-line">
-                        <span></span>
+                    <li *ngFor="let menu of menus" class="mdl-list__item mdl-list__item--one-line">
+                        <span class="menu-title">
+                            <i class="material-icons" *ngIf="menu.ICON.TITLE.length > 0">{{menu.ICON.TITLE}}</i>
+                            {{menu.TITLE}}
+                        </span>
+                        <span class="menu-btn" *ngIf="menu.CONT.length > 0">
+                            <i class="material-icons" *ngIf="menu.ICON.CONT.length > 0">{{menu.ICON.CONT}}</i>
+                            {{menu.CONT}}
+                        </span>
                     </li>
                 </ul>
             </div>
         </div>
     </footer>
 </div>
+
+<div class="bg"></div>

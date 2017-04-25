@@ -92,6 +92,11 @@ footer {
     margin-top: 1em;
 }
 
+.menu-title {
+    font-size: 18px;
+    margin: 0 1em;
+}
+
 .menu-list > .mdl-list {
     margin: 0 0 1em 0;
     padding: 0;

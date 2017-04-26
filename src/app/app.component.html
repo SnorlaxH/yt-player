@@ -43,14 +43,14 @@
             </div>
         </div>
 
-        <div class="footer-menu">
+        <div class="footer-menu" *ngIf="FTR == 2">
             <div class="menu-header">
                 <span class="menu-title">담기</span>
                 <label class="mdl-button mdl-js-button mdl-button--icon store-close">
                     <i class="material-icons">clear</i>
                 </label>
             </div>
-            <hr/>
+            <hr>
             <div class="menu-list">
                 <ul class="mdl-list">
                     <li *ngFor="let menu of menus" class="mdl-list__item mdl-list__item--one-line">
@@ -66,7 +66,20 @@
                 </ul>
             </div>
         </div>
+
+        <div class="footer-play" *ngIf="FTR == 3">
+            <img class="thumnail" />
+            <label class="mdl-button mdl-js-button mdl-button--icon play-icon md-48">
+                <i class="material-icons md-48">skip_previous</i>
+            </label>
+            <label class="mdl-button mdl-js-button mdl-button--icon play-icon md-48">
+                <i class="material-icons md-48">play_arrow</i>
+            </label>
+            <label class="mdl-button mdl-js-button mdl-button--icon play-icon md-48">
+                <i class="material-icons md-48">skip_next</i>
+            </label>
+        </div>
     </footer>
 </div>
 
-<div class="bg"></div>
+<div class="bg" *ngIf="FTR > 0"></div>

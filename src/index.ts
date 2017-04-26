@@ -23,6 +23,12 @@ app.on('ready', () => {
   });
 });
 
+app.on('window-all-closed', function() {
+  if(process.platform != 'darwin'){
+    app.quit();
+  }
+})
+
 ipcMain.on('message', (event, arg) => {
   console.log(`Received ${arg}`);
   event.sender.send("reply", "pong");

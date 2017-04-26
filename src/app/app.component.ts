@@ -18,7 +18,7 @@ export class AppComponent {
 
   public Title: string = "재생목록";
   IS_SEARCH: boolean = false;
-  FTR: number = 0;
+  FTR: number = 3;
   public menus: Object = [
     {
       TITLE: '재생 목록에 담기',

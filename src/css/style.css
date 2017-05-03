@@ -81,6 +81,7 @@ Footer
     width: 100%;
     height: 64px;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 /*
@@ -131,10 +132,10 @@ Footer - Menu End
 */
 
 /* Footer - Play */
-.play-icon.md-18 { width:18px; height: 18px;}
-.play-icon.md-24 { width:24px; height: 24px;}
-.play-icon.md-36 { width:36px; height: 36px;}
-.play-icon.md-48 { width:48px; height: 48px;}
+.mdl-button--icon.md-18 { width:18px; height: 18px;}
+.mdl-button--icon.md-24 { width:24px; height: 24px;}
+.mdl-button--icon.md-36 { width:36px; height: 36px;}
+.mdl-button--icon.md-48 { width:48px; height: 48px;}
 /* Footer - Play End */
 
 /*

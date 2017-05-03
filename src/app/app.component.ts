@@ -12,12 +12,18 @@ declare var componentHandler: any;
 })
 export class AppComponent {
   constructor(private appService: AppService) {
-    ipcRenderer.on("reply", (event, arg) => {
+    ipcRenderer.on("search:error", (event, arg) => {
+      console.log(event, arg);
+    });
+
+    ipcRenderer.on('search:result', (event, arg) => {
+      console.log(event, arg);
     });
   }
 
   public Title: string = "재생목록";
   IS_SEARCH: boolean = false;
+  bg: boolean = false;
   FTR: number = 3;
   public menus: Object = [
     {
@@ -37,6 +43,7 @@ export class AppComponent {
       }
     }
   ];
+  searchText: string = '';
 
   getSearch(): boolean {
     return this.appService.getSearch();
@@ -44,6 +51,10 @@ export class AppComponent {
 
   setSearch(isSearch: boolean): void {
     this.appService.setSearch(isSearch);
+  }
+
+  search(): void {
+    ipcRenderer.send('search', this.searchText);
   }
 
   ngOnInit() {

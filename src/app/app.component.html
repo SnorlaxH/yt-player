@@ -12,7 +12,7 @@
                 <i class="material-icons" (click)="setSearch(false)">keyboard_backspace</i>
             </label>
             <div class="mdl-textfield mdl-js-textfield search-field">
-                <input class="mdl-textfield__input" type="text" id="searchTxt">
+                <input id="searchTxt" class="mdl-textfield__input" type="text" [(ngModel)]="searchText" />
                 <label class="mdl-textfield__label" for="searchTxt">검색</label>
             </div>
         </div>
@@ -82,4 +82,4 @@
     </footer>
 </div>
 
-<div class="bg" *ngIf="FTR > 0"></div>
+<div class="bg" *ngIf="bg"></div>

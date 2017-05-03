@@ -3,8 +3,10 @@
 const electron : Electron.ElectronMainAndRenderer = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
-
 const ipcMain = electron.ipcMain;
+
+const google = require('googleapis');
+const youtube = google.youtube('v3');
 
 var mainWindow : Electron.BrowserWindow = null;
 
@@ -33,3 +35,23 @@ ipcMain.on('message', (event, arg) => {
   console.log(`Received ${arg}`);
   event.sender.send("reply", "pong");
 });
+
+ipcMain.on('search', (event, arg) => {
+  youtube.search.list({
+    q: arg,
+    part: 'snippet',
+    regionCode: 'KR',
+    key: 'AIzaSyBC896i0COJfC5IsZ72nQepumCHoMd_IqI'
+  },
+  (err: any, data: any) => {
+    if(err) {
+      console.error('Error: ' + err);
+      event.sender.send('search:error', err);
+    }
+
+    if(data) {
+      console.log(data);
+      event.sender.send('search:result', data);
+    }
+  })
+})

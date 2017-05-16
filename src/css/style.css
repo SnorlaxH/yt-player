@@ -8,6 +8,13 @@
     height: 100%;
     z-index: 10;
     background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    z-index: 11!important;
 }
 
 /*
@@ -22,10 +29,48 @@ PlayList
     height: 100%;
 }
 
-.play-list > .mdl-list {
-    margin: 0;
+.play-list > .music-list {
+    list-style: none;
+    margin: 20px;
     padding: 0;
 }
+
+.music-list > li {
+    margin: 20px 0;
+}
+
+.music-content {
+    display: flex;
+}
+
+.music-content .thumb { 
+    width: 100px;
+    height: 100px;
+}
+
+.music-content > .music-info {
+    width: calc(100% - 120px);
+    margin-left: 30px;
+}
+
+.music-content .music-title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: .04em;
+}
+
+.music-content .music-sub {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 18px;
+    height: 52px;
+    color: rgba(0,0,0,.54);
+    display: block;
+    padding: 0;
+}
+
 /*
 PlayList End
 */
@@ -48,7 +93,7 @@ Search
 }
 
 .search-field {
-    width: calc(100% - 40px);
+    width: calc(100% - 60px);
 }
 
 .search-field > .mdl-textfield__input {
@@ -60,7 +105,7 @@ Search
 }
 
 .search-field > .mdl-textfield__input, .mdl-textfield__label {
-    width: calc(100% - 20px);
+    width: calc(100% - 40px);
     color: #ffffff;
     margin-left: 16px;
     padding-left: 8px;

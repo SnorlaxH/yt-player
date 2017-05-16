@@ -47,8 +47,6 @@ gulp.task('electron:copy', () => {
             let SOURCE = item.source;
             let FILES = SOURCE.concat("/").concat(item.files);
 
-console.log(FILES);
-
             fs_setup.push({
                 from: `./bower_components/${FILES}`,
                 to: `./dist/assets/bower/${SOURCE}`

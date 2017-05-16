@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { AppService } from './app.service';
+
 const ipcRenderer = require('electron').ipcRenderer;
 
 declare var componentHandler: any;
@@ -11,20 +12,14 @@ declare var componentHandler: any;
   providers: [AppService]
 })
 export class AppComponent {
-  constructor(private appService: AppService) {
-    ipcRenderer.on("search:error", (event, arg) => {
-      console.log(event, arg);
-    });
-
-    ipcRenderer.on('search:result', (event, arg) => {
-      console.log(event, arg);
-    });
+  constructor(private appService: AppService, private changeDetectorRef: ChangeDetectorRef) {
+    
   }
 
   public Title: string = "재생목록";
   IS_SEARCH: boolean = false;
   bg: boolean = false;
-  FTR: number = 3;
+  FTR: number = 0;
   public menus: Object = [
     {
       TITLE: '재생 목록에 담기',
@@ -53,20 +48,32 @@ export class AppComponent {
     this.appService.setSearch(isSearch);
   }
 
+  setBackground(visible: boolean): void {
+    this.appService.setBackground(visible);
+  }
+
   search(): void {
+    this.setBackground(true);
     ipcRenderer.send('search', this.searchText);
   }
 
   ngOnInit() {
     this.appService.searchUpdated.subscribe(
       (IS_SEARCH: boolean) => {
+        this.searchText = '';
         this.IS_SEARCH = IS_SEARCH;
-        console.log('App', this.IS_SEARCH);
+        this.FTR = IS_SEARCH ? 0 : 3;
       }
     )
     this.appService.footerUpdated.subscribe(
       (FTR: number) => {
         this.FTR = FTR;
+      }
+    )
+    this.appService.backgroundUpdated.subscribe(
+      (visible: boolean) => {
+        this.bg = visible;
+        this.changeDetectorRef.detectChanges();
       }
     )
   }
